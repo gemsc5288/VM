@@ -4,7 +4,7 @@
 
 clonar usando:
 ```bash
-git clone --recursive https://github.com/desmonHak/vm
+git clone  --recursive https://github.com/desmonHak/VM.git
 ```
 
 ## Instalacion en linux:
