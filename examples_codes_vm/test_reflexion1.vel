@@ -1,0 +1,89 @@
+@Class {
+    @Description("Este es una clase base para representar al resto de objetos")
+    @Name("Object")
+    @Access("public")
+    @Extends{}
+    @Interface{
+
+    }
+}
+Object:
+
+    @Field {
+        @Description("Este es atributo privado que contiene el nombre de la clase")
+        @Access("private")
+        @Warning("Esto es ejemplo de Warning")
+        @Name("toStringRetVal1")
+        @Offset(0)  // esta en el offset 0 del objeto
+
+        @Type(2) // FIELD_CLASS(0),  FIELD_STRUCT(1),
+                 // FIELD_PTR(2),    FIELD_PRIMITIVE(3),
+                 // FIELD_ENUM(4)
+
+        @Size(16)    // solo necesario para campos como
+                        // un enum, o una estructura, el resto
+                        // de tipos se conocen su tamaño
+    }
+    _toStringRetVal1 ptr 0x0 // inicializamos un puntero para un string object
+
+    @Method {
+        @Description("Este es un metodo constructor")
+        @Access("public")
+        @Args{
+            @Field {
+                @Name("self")
+                @Type(2)    // FIELD_CLASS(0),  FIELD_STRUCT(1),
+                            // FIELD_PTR(2),    FIELD_PRIMITIVE(3),
+                            // FIELD_ENUM(4)
+
+                // @Size(16)    // solo necesario para campos como
+                                // un enum, o una estructura, el resto
+                                // de tipos se conocen su tamaño
+                @Description("Este es un puntero a si mismo")
+            }
+        }
+    }
+    constructor1:
+
+        // cargamos direccion en r15
+        LEA r15, [r01 + _toStringRetVal1@Offset] // r15 = r01 + 0x0
+                        // el primer valor que hay en el objeto es el field
+                        // _toStringRetVal1 que ocupa 8 bytes en 64bits
+
+
+        STOREMq r15, _data_raw // almacenar *(r15) = &_stringObject
+
+        // r00 devuelve, r01 es self.
+        mov r00, r01
+        ret
+
+    @Method {
+        @Name("toString")
+        @Description("Este es un metodo toString que devuelve una representacion de la clase")
+        @Args{
+            @Field {
+                @Description("Este es un puntero a si mismo")
+                @Name("self")
+                @Type(2)    // FIELD_CLASS(0),  FIELD_STRUCT(1),
+                            // FIELD_PTR(2),    FIELD_PRIMITIVE(3),
+                            // FIELD_ENUM(4)
+
+                // @Size(16)    // solo necesario para campos como
+                                // un enum, o una estructura, el resto
+                                // de tipos se conocen su tamaño
+            }
+        }
+    }
+    toString:
+        // cargamos direccion(self->_toStringRetVal1) en r01
+        // _toStringRetVal1 es un "objeto"
+        // r00 = *(self + offset)
+        LOADMq r00, [r01 + _toStringRetVal1@Offset]
+        ret
+
+
+    // datos en crudo a lo que puede apuntar el objeto.
+    _data_raw:
+        _stringObject:
+            data db "Object"
+            size db sizeof(data)

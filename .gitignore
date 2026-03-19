@@ -1,0 +1,12 @@
+.idea
+cmake-build-debug
+cmake-build-release
+build
+build-windows
+build-linux
+*.pem
+.vscode
+libs/Windows/OpenSSL-Win64/bin
+libs/Windows/OpenSSL-Win64/exp
+libssl*
+libcrypto*

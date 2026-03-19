@@ -1,0 +1,12 @@
+[submodule "libs/SourceCode/keystone"]
+	path = libs/SourceCode/keystone
+	url = https://github.com/keystone-engine/keystone
+[submodule "libs/SourceCode/capstone"]
+	path = libs/SourceCode/capstone
+	url = https://github.com/capstone-engine/capstone
+[submodule "libs/SourceCode/ftxui"]
+	path = libs/SourceCode/ftxui
+	url = https://github.com/ArthurSonzogni/FTXUI
+[submodule "libs/SourceCode/DistanciaLevenshtein"]
+	path = libs/SourceCode/DistanciaLevenshtein
+	url = https://github.com/desmonHak/DistanciaLevenshtein.git
